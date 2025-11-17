@@ -2,8 +2,6 @@
 
 # Authors: @esperlu, @artemyk, @gkuenning, @dumblob
 
-# FIXME detect empty input file and issue a warning
-
 function printerr( s ){ print s | "cat >&2" }
 
 BEGIN {
@@ -286,4 +284,6 @@ END {
       "     or if ASCII) and doesnt cross-check TABLE and TEMPORARY TABLE\n" \
       "     identifiers. Thus expect errors like \"table T has no column named F\".")
   }
+  
+  if( NR == 0 ){ printerr("WARN Empty input file") }
 }
